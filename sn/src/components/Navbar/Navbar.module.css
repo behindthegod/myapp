@@ -1,0 +1,8 @@
+.nav {
+    grid-area: n;
+    background-color: silver;
+    padding-left: 15px;
+}
+ .item {
+     color: magenta;
+ }
