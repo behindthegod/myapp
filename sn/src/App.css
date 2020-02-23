@@ -3,14 +3,15 @@
   grid-template-rows: 147px 1fr;
   grid-template-columns: 150px 1fr;
 
-  grid-template-areas:
-    "h h"
-    "n c";
+  grid-template-areas: "h h" "n c";
 }
 
 .app-wrapper img {
   width: 900px;
 }
 
+.app-wrapper-content {
+
+}
 
 

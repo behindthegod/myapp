@@ -1,8 +1,17 @@
 .nav {
-    grid-area: n;
-    background-color: silver;
-    padding-left: 15px;
-}
- .item {
-     color: magenta;
+     grid-area: n;
+     background-color: silver;
+     padding-left: 15px;
+     padding-top: 10px;
  }
+
+.item a {
+    color: magenta;
+    text-decoration: none;
+}
+
+.item a.active {
+    color: goldenrod;
+
+    
+}
