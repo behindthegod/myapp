@@ -7,6 +7,9 @@ let PostData = [
     {id: 2, post: "Все отлично-все нормально", likesCount: 144}
 ];
 
+let postsElement = PostData.map(post => <Post message={post.post} likesCount={post.likesCount}/>);
+// post - псевдоним для каждого элемента из PostData.
+
 const MyPost = (props) => {
     return <div>
         My post
@@ -17,8 +20,9 @@ const MyPost = (props) => {
             </div>
         </div>
         <div>
-            <Post message={PostData[0].post} likesCount={PostData[0].likesCount}/>
-            <Post message={PostData[1].post} likesCount={PostData[1].likesCount}/>
+
+            {postsElement}
+
         </div>
     </div>
 };
