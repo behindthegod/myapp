@@ -6,8 +6,8 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
     return <div className={classes.content}>
-        <ProfileInfo dialogs={props.dialogs} messages={props.message}/>
-        <MyPost posts={props.posts}/>
+        <ProfileInfo messages={props.state.messages} dialogs={props.state.dialogs}/>
+        <MyPost posts={props.state.posts} />
     </div>
 };
 
