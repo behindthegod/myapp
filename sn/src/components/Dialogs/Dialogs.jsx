@@ -3,17 +3,27 @@ import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
-let newMessageElement = React.createRef();
 
-
-let addMessage = () => {
-    let text = newMessageElement.current.value;
-    alert(text);
-}
 
 const Dialogs = (props) => {
-    let dialogsElement = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
-    let messagesElement = props.state.messages.map(m => <Message messages={m.message}/>);
+    let dialogsElement = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
+    let messagesElement = props.dialogsPage.messages.map(m => <Message messages={m.message}/>);
+
+    let newMessageElement = React.createRef();
+
+
+    let addMessage = () => {
+        props.addMessage();
+    };
+
+    let onMessageChange = () => {
+        let text = newMessageElement.current.value;
+        props.updateNewMessageText(text);
+    };
+
+
+
+
 
     return <div className={classes.dialogs}>
         <div className={classes.dialogItem}>
@@ -21,7 +31,7 @@ const Dialogs = (props) => {
         </div>
         <div>
             {messagesElement}
-            <div><textarea ref={newMessageElement}/></div>
+            <div><textarea onChange={onMessageChange} ref={newMessageElement} value={props.newPostMessage}/></div>
             <div><button onClick={addMessage}>add message</button></div>
         </div>
     </div>
