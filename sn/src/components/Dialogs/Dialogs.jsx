@@ -4,6 +4,8 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 let newMessageElement = React.createRef();
+
+
 let addMessage = () => {
     let text = newMessageElement.current.value;
     alert(text);
