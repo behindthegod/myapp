@@ -1,10 +1,11 @@
-import React from "react";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 
 let store = {
     _state: {
@@ -25,7 +26,7 @@ let store = {
                 {id: 2, message: "Samuray"},
                 {id: 3, message: "JS"},
             ],
-            newPostMessage: "Super"
+            newMessageBody: "",
         }
     },
     getState() {
@@ -37,144 +38,19 @@ let store = {
 
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 3,
-                post: this._state.profilePage.newPostText,
-                likesCount: 33
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText='';
-            this._callSubscriber(this.getState());
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText=action.text;
-            this._callSubscriber(this.getState());
-
-        } else if (action.type === 'ADD-MESSAGE') {
-            let newMessage = {
-                id: 4,
-                message: 'чух',
-            };
-            this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newPostMessage='';
-            this._callSubscriber(this.getState());
-
-        } else if (action === 'UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.dialogsPage.newMessageText=action.text;
-            this._callSubscriber(this.getState());
-        }
+        this._callSubscriber(this._state);
     },
 
 };
-export const addPostActionCreator = () => {
-    return {
-        type: ADD_POST
-    }
-};
 
-export const updateNewPostTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        text: text
-    }
-};
 
-export const addMessageActionCreator = () => {
-    return {
-        type: ADD_MESSAGE
-    }
-};
 
-export const updateNewMessageTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        text: text
-    }
-};
+
 export default store;
 
 
 
-// let rerenderEntireTree = ()=> {}
-// let state = {
-//     profilePage: {
-//         posts: [
-//             {id: 1, post: "Привет, как дела?", likesCount: 12},
-//             {id: 2, post: "Все отлично-все нормально", likesCount: 144}
-//         ],
-//         newPostText: "HardCodeJS"
-//     },
-//     dialogsPage: {
-//         dialogs: [
-//             {id: 1, name: "Sveta"},
-//             {id: 2, name: "Petr"}
-//         ],
-//         messages: [
-//             {id: 1, message: "Hello!"},
-//             {id: 2, message: "Samuray"},
-//             {id: 3, message: "JS"},
-//         ],
-//         newPostMessage: "Super"
-//     }
-// };
-// export const addPost = () => {
-//     let newPost = {
-//             id: 3,
-//             post: state.profilePage.newPostText,
-//             likesCount: 33
-//         };
-//     state.profilePage.posts.push(newPost);
-//     state.profilePage.newPostText='';
-//     rerenderEntireTree(state);
-// };
-// export const updateNewPostText = (text) => {
-//     state.profilePage.newPostText=text;
-//     rerenderEntireTree(state);
-// };
-// export const addMessage = () => {
-//     let newMessage = {
-//         id: 4,
-//         message: "Привет!"
-//     };
-//     state.dialogsPage.messages.push(newMessage);
-//     state.dialogsPage.newPostMessage='';
-//     rerenderEntireTree(state);
-// };
-// export const updateNewMessageText = (text) => {
-//     state.dialogsPage.newMessageText=text;
-//     rerenderEntireTree(state);
-// };
-// export const subscribe = (observer) => {
-//     rerenderEntireTree = observer;
-//
-// };
-//
-// addPost() {
-//     let newPost = {
-//         id: 3,
-//         post: this._state.profilePage.newPostText,
-//         likesCount: 33
-//     };
-//     this._state.profilePage.posts.push(newPost);
-//     this._state.profilePage.newPostText='';
-//     this._callSubscriber(this.getState());
-// },
-// updateNewPostText(text) {
-//     this._state.profilePage.newPostText=text;
-//     this._callSubscriber(this.getState());
-// },
-// addMessage() {
-//     let newMessage = {
-//         id: 4,
-//         message: "Привет!"
-//     };
-//     this._state.dialogsPage.messages.push(newMessage);
-//     this._state.dialogsPage.newPostMessage='';
-//     this._callSubscriber(this.getState());
-// },
-// updateNewMessageText(text) {
-//     this._state.dialogsPage.newMessageText=text;
-//     this._callSubscriber(this.getState());
-// },
 
