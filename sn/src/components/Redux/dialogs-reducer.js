@@ -1,8 +1,21 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 
-const dialogsReducer = (state, action) => {
+let initialState =  {
+    dialogs: [
+        {id: 1, name: "Sveta"},
+        {id: 2, name: "Petr"}
+    ],
+    messages: [
+        {id: 1, message: "Hello!"},
+        {id: 2, message: "Samuray"},
+        {id: 3, message: "JS"},
+    ],
+    newMessageBody: "",
+};
+// initialState - начальный стейт, без него редьюсер не сработает и отдаст андеф.
 
+const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE:
             let body = state.newMessageBody;
@@ -15,7 +28,6 @@ const dialogsReducer = (state, action) => {
         default:
             return state;
     }
-
     return state;
 };
 
