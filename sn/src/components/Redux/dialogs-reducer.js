@@ -16,11 +16,17 @@ let initialState =  {
 // initialState - начальный стейт, без него редьюсер не сработает и отдаст андеф.
 
 const dialogsReducer = (state = initialState, action) => {
+   let stateCopy = {
+       ...state,
+       messages: [...state.messages]
+   };
+
     switch (action.type) {
         case SEND_MESSAGE:
             let body = state.newMessageBody;
-            state.newMessageBody = '';
+
             state.messages.push({id: 5, message: body});
+            state.newMessageBody = '';
             return state;
         case UPDATE_NEW_MESSAGE_BODY:
             state.newMessageBody = action.body;
