@@ -34,8 +34,7 @@ let store = {
     },
     _callSubscriber() {},
     subscribe(observer) {
-        this._callSubscriber = observer;
-
+       return  this._callSubscriber = observer;
     },
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
