@@ -9,9 +9,9 @@ let initialState =  {
     messages: [
         {id: 1, message: "Hello!"},
         {id: 2, message: "Samuray"},
-        {id: 3, message: "JS"},
+        {id: 3, message: "JS++"},
     ],
-    newMessageBody: "",
+    newMessageBody: '',
 };
 // initialState - начальный стейт, без него редьюсер не сработает и отдаст андеф.
 
@@ -25,8 +25,8 @@ const dialogsReducer = (state = initialState, action) => {
             let body = state.newMessageBody;
             return {
                 ...state,
-                newMessageBody: '',
-                message: [...state.messages,{id: 8, message:body }]
+                message: [...state.messages,{id: 8, message:body }],
+                newMessageBody: ''
             };
         case UPDATE_NEW_MESSAGE_BODY:
             return {
