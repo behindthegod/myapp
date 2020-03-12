@@ -4,7 +4,10 @@ const SET_USERS = "SET-USERS";
 
 
 let initialState = {
-    users: []
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 20,
+    currentPage: 3
 };
 // initialState - начальный стейт, без него редьюсер не сработает и отдаст андеф.
 
