@@ -2,6 +2,7 @@ import React from "react";
 import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {Redirect} from "react-router-dom";
 
 
 const Dialogs = (props) => {
@@ -20,6 +21,8 @@ const Dialogs = (props) => {
 
     };
 
+
+
     return <div className={classes.dialogs}>
         <div className={classes.dialogItem}>
             {dialogsElement}
@@ -27,7 +30,7 @@ const Dialogs = (props) => {
         <div>
             <div>{messagesElement}</div>
             <div>
-                <div><textarea onChange={onNewMessageChange} placeholder='Ебучий урок!!!!!!' value={props.newMessageBody}/></div>
+                <div><textarea onChange={onNewMessageChange} placeholder='Ебучий урок!' value={props.newMessageBody}/></div>
                 <div>
                     <button onClick={onSendMessageClick}>add message</button>
                 </div>

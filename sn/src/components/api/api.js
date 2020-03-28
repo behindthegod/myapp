@@ -14,8 +14,21 @@ export const userAPI = {
             .then(response => {
                 return response.data
             }); //возвращаем из ответа только дату, а не весь ответ
+    },
+    follow(userId) {
+        return instance.post(`follow/${userId}`);
+    },
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`);
+    },
+    getProfile(userId) {
+        return instance.get(`profile/`+ userId);
     }
-
+};
+export const authAPI = {
+    me() {
+        return instance.get(`auth/me`);
+    }
 };
 
 
