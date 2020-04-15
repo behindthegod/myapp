@@ -1,47 +1,35 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 
 let initialState =  {
     dialogs: [
-        {id: 1, name: "Sveta"},
-        {id: 2, name: "Petr"}
+        {id: 1, name: "Oleg"},
+        {id: 2, name: "Petr"},
+        {id: 3, name: "Nikolay"},
     ],
     messages: [
-        {id: 1, message: "Hello!"},
-        {id: 2, message: "Samuray"},
-        {id: 3, message: "JS++"},
-    ],
-    newMessageBody: '',
+        {id: 1, message: "Илтя"},
+        {id: 2, message: "Привет"},
+        {id: 3, message: "Джей Эс"},
+    ]
 };
-// initialState - начальный стейт, без него редьюсер не сработает и отдаст андеф.
+
 
 const dialogsReducer = (state = initialState, action) => {
    let stateCopy = {
        ...state,
        message: [...state.messages]
    };
-    switch (action.type) {
-        case SEND_MESSAGE:
-            let body = state.newMessageBody;
-            return {
-                ...state,
-                message: [...state.messages,{id: 8, message:body }],
-                newMessageBody: ''
-            };
-        case UPDATE_NEW_MESSAGE_BODY:
-            return {
-                ...state,
-                newMessageBody: action.body
-            };
-        default:
-            return state;
+    if (action.type === SEND_MESSAGE) {
+        let body = action.newMessageBody;
+        return {
+            ...state,
+            messages: [...state.messages, {id: 8, message:body }]
+        };
+    } else {
+        return state;
     }
-    return state;
 };
 
-export const sendMessageCreator = () => ({type: SEND_MESSAGE});
-
-export const updateNewMessageBodyCreator = (body) => ({type: UPDATE_NEW_MESSAGE_BODY, body: body});
-
+export const sendMessageCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody});
 
 export default dialogsReducer;
