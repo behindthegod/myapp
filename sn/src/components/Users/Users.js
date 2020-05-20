@@ -4,14 +4,10 @@ import User from "./User";
 
 
 let Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props}) => {
-    let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pageCount; i++) {
-        pages.push(i);
-    }
+
     return <div>
         <Paginator currentPage={currentPage}
-                   totalUsersCount={totalUsersCount}
+                   totalItemsCount={totalUsersCount}
                    onPageChanged={onPageChanged}
                    pageSize={pageSize}/>
         <div>
