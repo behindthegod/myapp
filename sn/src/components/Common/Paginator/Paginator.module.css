@@ -7,7 +7,7 @@
 }
 .pageNumber {
     paddig: 4px;
-    border: 2px solid greenyellow;
+    border: 1px solid dimgray;
 }
 .pageNumber.selectedPage {
     font-weight: bold;
