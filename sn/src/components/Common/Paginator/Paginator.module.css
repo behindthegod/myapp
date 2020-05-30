@@ -8,6 +8,11 @@
 .pageNumber {
     paddig: 4px;
     border: 1px solid dimgray;
+    background-color: thistle;
+    color: fuchsia;
+    margin: 2px;
+    font-weight: bold;
+    font-size: 20px;
 }
 .pageNumber.selectedPage {
     font-weight: bold;
