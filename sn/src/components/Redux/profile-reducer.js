@@ -74,6 +74,14 @@ export const savePhoto = (file) => async (dispatch) => {
         dispatch(savePhotoSuccess(response.data.data.photos));
     }
 };
+
+export const saveProfile = (profile) => async (dispatch) => {
+    let response = await profileAPI.savePhoto(file);
+
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos));
+    }
+};
 export const setUserProfile = (profile) => {return {type: SET_USER_PROFILE, profile}};
 export const setStatus = (status) => {return{type: SET_STATUS, status}};
 export const savePhotoSuccess = (photos) => {return{type: SAVE_PHOTO_SUCCESS, photos}};
